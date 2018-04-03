@@ -15,6 +15,7 @@ def display_board(b)
 end
 
 
+<<<<<<< HEAD
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
@@ -37,6 +38,17 @@ def play(board)
     puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
     puts "Cat's Game!"
+=======
+# MAIN UTILITY METHODS ##########################################
+def position_taken?(board, index)
+  !(board[index].nil? || board[index] == " ")
+end
+
+  
+def won?(b) # b short for board
+  WIN_COMBINATIONS.find do |win|
+    b[win[0]] == b[win[1]] && b[win[1]] == b[win[2]] && b[win[0]] != " "
+>>>>>>> ddab7ccabeddf48e930b86545b7bf1c7ad5a095d
   end
 end
 # END MAIN UTILITY METHODS #################################
@@ -44,7 +56,10 @@ end
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ddab7ccabeddf48e930b86545b7bf1c7ad5a095d
 # CHECK GAME STATUS ####################################
 def full?(board)
   return board.none? {|xo| xo == " "}
@@ -58,6 +73,7 @@ end
 
 def over?(board)
   return draw?(board) || won?(board)
+<<<<<<< HEAD
 end
 
 
@@ -65,6 +81,8 @@ def won?(b) # b short for board
   WIN_COMBINATIONS.find do |win|
     b[win[0]] == b[win[1]] && b[win[1]] == b[win[2]] && b[win[0]] != " "
   end
+=======
+>>>>>>> ddab7ccabeddf48e930b86545b7bf1c7ad5a095d
 end
 # END CHECK GAME STATUS ####################################
 
@@ -100,9 +118,37 @@ def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
+<<<<<<< HEAD
 
 def valid_move?(board, index)
   return !position_taken?(board, index) && index.between?(0,8)
+=======
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.strip
+  index = input_to_index(input)
+  loop do
+    if valid_move?(board, index)
+      char = current_player(board) 
+      move(board,index,char) 
+      display_board(board)
+      break
+    end
+  end
+end
+
+def play(board)
+
+  until over? 
+    turn(board)
+  end
+  
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
+>>>>>>> ddab7ccabeddf48e930b86545b7bf1c7ad5a095d
 end
 
 
